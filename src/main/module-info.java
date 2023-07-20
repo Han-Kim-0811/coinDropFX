@@ -3,6 +3,6 @@ module com.example.coindropfx {
     requires javafx.fxml;
 
 
-    opens com.example.coindropfx to javafx.fxml;
-    exports com.example.coindropfx;
+    opens ui to javafx.fxml;
+    exports ui;
 }

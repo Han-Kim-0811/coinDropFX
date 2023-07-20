@@ -1,6 +1,6 @@
 # coinDropFX 
 
-coinDropFX is an academic project from Langara College CPSC 1181: Object-oriented Computing. It is currently being revised, since I gained more experience with object oriented programming. 
+coinDropFX is an academic project from Langara College CPSC 1181: Object-oriented Computing. The original version was created on April 4, 2022 and it is currently being revised. 
 
 > **What does this project do?**
 > - It simulates a game of coin drop.

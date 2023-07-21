@@ -2,64 +2,63 @@ package model;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import ui.Driver;
 import ui.StageBuilder;
 
 /**
- * Class that represents Coin
+ * Class that represents a coin.
+ * Coin is a component of the pachinko machine.
  */
 public class Coin{
-    private Circle coin;
+    private Circle coinShape;
     private double xVel;
     private double yVel;
 
     /**
-     * Constructor of Coin
+     * Constructor of Coin object.
      *
-     * @param x is the x-coordinate of the center of the coin
-     * @param y is the y-coordinate of the center of the coin
+     * @param x is the x-coordinate of the center of the coin.
+     * @param y is the y-coordinate of the center of the coin.
      */
     public Coin(double x, double y){
-        coin = new Circle(x, y, StageBuilder.SHAPESIZE / 2);
-        coin.setFill(Color.GOLD);
+        coinShape = new Circle(x, y, StageBuilder.SHAPESIZE / 2);
+        coinShape.setFill(Color.GOLD);
         xVel = 0;
         yVel = StageBuilder.VELOCITY;
     }
 
     /**
-     * Getter method of xVel
+     * Getter method of xVel.
      *
-     * @return horizontal velocity of the coin
+     * @return the horizontal velocity of the coin.
      */
     public double getxVel(){
-        return this.xVel;
+        return xVel;
     }
 
     /**
-     * Getter method of yVel
+     * Getter method of yVel.
      *
-     * @return vertical velocity of the coin
+     * @return the vertical velocity of the coin.
      */
     public double getyVel(){
-        return this.yVel;
+        return yVel;
     }
 
     /**
-     * Setter method of xVel
+     * Setter method of xVel.
      *
-     * @param xVel is horizontal velocity to set
-     * @return void
+     * @param xVel is horizontal velocity to set.
      */
     public void setxVel(double xVel){
         this.xVel = xVel;
     }
 
     /**
-     * Getter method of coin
+     * Getter method of coinShape.
      *
-     * @return the circle, which represents the coin
+     * @return the JavaFX shape circle, which represents the coin.
      */
-    public Circle getCoin(){
-        return this.coin;
+    public Circle getCoinShape(){
+        return coinShape;
     }
 }

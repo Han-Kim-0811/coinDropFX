@@ -6,7 +6,8 @@ import ui.CoinAnimation;
 import ui.StageBuilder;
 
 /**
- * A class that represents the main structure of the coin drop game
+ * A class that represents the pachinko machine.
+ * The pachinko machine is main structure of the coin drop game.
  */
 public class Pachinko{
     private CoinAnimation animation;
@@ -16,7 +17,7 @@ public class Pachinko{
     private int winCount;
 
     /**
-     * Constructor for Pachinko object
+     * Constructor for Pachinko instance
      */
     public Pachinko(){
         coins = new ArrayList<>();
@@ -32,50 +33,81 @@ public class Pachinko{
         StageBuilder.setTitle("Coin Drop Game (Coins left: " + coinCount + " Wins: " + winCount + ")");
     }
 
+    /**
+     * Getter method of layout.
+     *
+     * @return the layout of borders, obstacles, winning pots of the pachinko machine.
+     */
     public int[][] getLayout() {
         return layout;
     }
 
+    /**
+     * Getter method of coins.
+     *
+     * @return the list of coins existing in the game.
+     */
     public ArrayList<Coin> getCoins() {
         return coins;
     }
 
+    /**
+     * Getter method of coinCount.
+     *
+     * @return the count of unused coins.
+     */
     public int getCoinCount() {
         return coinCount;
     }
 
+    /**
+     * Setter method of coinCount.
+     */
     public void setCoinCount(int coinCount) {
         this.coinCount = coinCount;
     }
 
+    /**
+     * Getter method of winCount.
+     *
+     * @return the count of coins dropped into the winning pots.
+     */
     public int getWinCount() {
         return winCount;
     }
 
+    /**
+     * Setter method of winCount.
+     */
     public void setWinCount(int winCount) {
         this.winCount = winCount;
     }
 
+    /**
+     * Method to add a coin to the game.
+     * The added coin will drop according to the rules.
+     */
     public void addCoin(double x, double y) {
         Coin coin = new Coin(x, y);
         coins.add(coin);
-        StageBuilder.addCoin(coin.getCoin());
+        StageBuilder.addCoin(coin.getCoinShape());
         coinCount--;
     }
 
     /**
-     * Method to generate the layout of the pachinko game
+     * Method to generate the layout of the pachinko machine.
      */
     public void genLayout(){
         layout = new int[24][20];
         genBorder();
         genButton();
         genWinPot();
-        genDebris();
+        genObstacle();
     }
 
     /**
-     * Method to generate the borders of layout
+     * Method to generate the borders in the layout.
+     * The integer 1 represents the borders.
      */
     private void genBorder(){
         for(int i = 0; i < layout.length; i++){
@@ -85,7 +117,8 @@ public class Pachinko{
     }
 
     /**
-     * Method to generate the buttons of layout
+     * Method to generate the buttons in the layout.
+     * The integer 2 represents the buttons
      */
     private void genButton(){
         for(int i = 1; i < layout[0].length - 1; i++){
@@ -94,7 +127,8 @@ public class Pachinko{
     }
 
     /**
-     * Method to generate the winning pots of layout
+     * Method to generate the winning pots in the layout.
+     * The integer 3 represents the winning pots.
      */
     private void genWinPot(){
         for(int i = 0; i < 5; i++){
@@ -103,12 +137,13 @@ public class Pachinko{
     }
 
     /**
-     * Method to randomly generate the debris of layout
+     * Method to randomly generate the obstacles in the layout.
+     * The integer 4 represents the obstacles.
      */
-    private void genDebris(){
+    private void genObstacle(){
         for(int i = 2; i < layout.length - 2; i++){
             for(int j = 1; j < layout[i].length - 1; j++){
-                if(!isDebrisNear(j, i) && (int)(Math.random() * 3) == 0){
+                if(!isObstaclesNear(j, i) && (int)(Math.random() * 3) == 0){
                     layout[i][j] = 4;
                 }
             }
@@ -116,13 +151,13 @@ public class Pachinko{
     }
 
     /**
-     * Method to check if a debris is near the given position
+     * Method to check if an obstacles is near the given position.
      *
-     * @param x is the x-coordinate of the position to check
-     * @param y is the y-coordinate of the position to check
-     * @return true if a debris is near, false if not
+     * @param x is the x-coordinate of the position to check.
+     * @param y is the y-coordinate of the position to check.
+     * @return true if an obstacles is near, false if not.
      */
-    private boolean isDebrisNear(int x, int y){
+    private boolean isObstaclesNear(int x, int y){
         for(int i = y - 1; i <= y + 1; i++){
             for(int j = x - 1; j <= x + 1; j++){
                 if(layout[i][j] == 4){

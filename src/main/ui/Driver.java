@@ -13,18 +13,16 @@ public class Driver extends Application {
     /**
      * Main method, which launches the coin drop game application
      *
-     * @param args isn't used
-     * @return void
+     * @param args isn't used.
      */
     public static void main(String[] args) {
         launch();
     }
 
     /**
-     * Start method for javaFX
+     * Start method for javaFX.
      *
-     * @param stage is the stage to show
-     * @return void
+     * @param stage is the stage to show.
      */
     @Override
     public void start(Stage stage){

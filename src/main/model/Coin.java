@@ -14,13 +14,13 @@ public class Coin{
     private double yVel;
 
     /**
-     * Constructor of Coin object.
+     * Constructor of Coin instance.
      *
      * @param x is the x-coordinate of the center of the coin.
      * @param y is the y-coordinate of the center of the coin.
      */
     public Coin(double x, double y){
-        coinShape = new Circle(x, y, StageBuilder.SHAPESIZE / 2);
+        coinShape = new Circle(x, y, StageBuilder.SHAPE_SIZE / 2);
         coinShape.setFill(Color.GOLD);
         xVel = 0;
         yVel = StageBuilder.VELOCITY;

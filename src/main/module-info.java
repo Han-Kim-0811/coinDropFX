@@ -1,4 +1,4 @@
-module com.example.coindropfx {
+module model {
     requires javafx.controls;
     requires javafx.fxml;
 

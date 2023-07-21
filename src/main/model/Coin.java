@@ -6,7 +6,7 @@ import ui.StageBuilder;
 
 /**
  * Class that represents a coin.
- * Coin is a component of the pachinko machine.
+ * Coins are component of the pachinko machine.
  */
 public class Coin{
     private Circle coinShape;

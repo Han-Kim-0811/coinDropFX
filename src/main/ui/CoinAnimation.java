@@ -12,8 +12,6 @@ import java.util.ArrayList;
 public class CoinAnimation extends AnimationTimer {
     /**
      * Method that animates the coins
-     *
-     * @return void
      */
     @Override
     public void handle(long arg0) {
@@ -21,8 +19,8 @@ public class CoinAnimation extends AnimationTimer {
         ArrayList<Coin> coins = StageBuilder.pachinko.getCoins();
 
         for(Coin coin : coins){
-            double x = coin.getCoin().getCenterX();
-            double y = coin.getCoin().getCenterY();
+            double x = coin.getCoinShape().getCenterX();
+            double y = coin.getCoinShape().getCenterY();
 
             int layoutX = (int)(x / StageBuilder.SHAPESIZE);
             int layoutY = (int)((y + StageBuilder.SHAPESIZE / 2) / StageBuilder.SHAPESIZE);
@@ -36,15 +34,15 @@ public class CoinAnimation extends AnimationTimer {
 
             x += coin.getxVel();
             y += coin.getyVel();
-            coin.getCoin().setCenterX(x);
-            coin.getCoin().setCenterY(y);
+            coin.getCoinShape().setCenterX(x);
+            coin.getCoinShape().setCenterY(y);
 
             if(((int)(x - StageBuilder.SHAPESIZE / 2) % (int)StageBuilder.SHAPESIZE) == 0){
                 coin.setxVel(0);
             }
 
             if(y - StageBuilder.SHAPESIZE / 2 > StageBuilder.HEIGHT) {
-                StageBuilder.removeCoin(coin.getCoin());
+                StageBuilder.removeCoin(coin.getCoinShape());
                 coins.remove(coin);
                 if(layout[layout.length - 1][layoutX] == 3){
                     StageBuilder.pachinko.setWinCount(StageBuilder.pachinko.getWinCount() + 1);

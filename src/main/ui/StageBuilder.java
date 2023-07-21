@@ -8,6 +8,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import model.CoinButton;
 import model.Pachinko;
 
 public class StageBuilder {
@@ -53,13 +54,8 @@ public class StageBuilder {
                         root.getChildren().add(wall);
                         break;
                     case 2:
-                        Button button = new Button("");
-                        button.setLayoutX(j * SHAPESIZE);
-                        button.setLayoutY(i * SHAPESIZE);
-                        button.setPrefHeight(SHAPESIZE);
-                        button.setPrefWidth(SHAPESIZE);
-                        button.setOnAction(new ButtonHandler((j + 0.5) * SHAPESIZE, (i + 1.5) * SHAPESIZE));
-                        root.getChildren().add(button);
+                        Button coinButton = new CoinButton(j, i, SHAPESIZE);
+                        root.getChildren().add(coinButton);
                         break;
                     case 3:
                         Rectangle win = new Rectangle(j * SHAPESIZE, i * SHAPESIZE, SHAPESIZE, SHAPESIZE);

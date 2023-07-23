@@ -22,8 +22,6 @@ public class StageBuilder {
     public static final double SHAPE_SIZE = 25.0;
     public static final double VELOCITY = 2.5;
 
-    public static Pachinko pachinko;
-
     private static Stage stage;
     private static Pane root;
 
@@ -36,7 +34,6 @@ public class StageBuilder {
         StageBuilder.stage = stage;
         root = new Pane();
 
-        pachinko = new Pachinko();
         buildPachinko();
 
         Scene scene = new Scene(root, WIDTH, HEIGHT);
@@ -67,7 +64,7 @@ public class StageBuilder {
      * Static method that builds the GUI of pachinko machine accroding to its layout.
      */
     private static void buildPachinko() {
-        int[][] layout = pachinko.getLayout();
+        int[][] layout = Pachinko.getInstance().getLayout();
 
         for(int i = 0; i < layout.length; i++){
             for(int j = 0; j < layout[i].length; j++){
@@ -111,6 +108,8 @@ public class StageBuilder {
      *      2. Reset the number of coins left.
      */
     public static void rebuildPachinko() {
+        Pachinko pachinko = Pachinko.getInstance();
+
         pachinko.genLayout();
         pachinko.setCoinCount(10);
         root.getChildren().remove(0, root.getChildren().size());

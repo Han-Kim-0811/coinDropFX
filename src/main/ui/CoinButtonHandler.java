@@ -2,6 +2,7 @@ package ui;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import model.Pachinko;
 
 /**
  * Class that handles the event for CoinButton.
@@ -30,12 +31,14 @@ public class CoinButtonHandler implements EventHandler<ActionEvent> {
      */
     @Override
     public void handle(ActionEvent e){
-        if(StageBuilder.pachinko.getCoinCount() > 0) {
-            StageBuilder.pachinko.addCoin(x, y);
-        }else if(StageBuilder.pachinko.getCoins().isEmpty()){
+        Pachinko pachinko = Pachinko.getInstance();
+
+        if(pachinko.getCoinCount() > 0) {
+            pachinko.addCoin(x, y);
+        }else if(pachinko.getCoins().isEmpty()){
             StageBuilder.rebuildPachinko();
         }
-        StageBuilder.setTitle("Coin Drop Game (Coins left: " + StageBuilder.pachinko.getCoinCount() +
-                " Wins: " + StageBuilder.pachinko.getWinCount() + ")");
+        StageBuilder.setTitle("Coin Drop Game (Coins left: " + pachinko.getCoinCount() +
+                " Wins: " + pachinko.getWinCount() + ")");
     }
 }

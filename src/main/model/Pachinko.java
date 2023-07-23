@@ -10,6 +10,7 @@ import ui.StageBuilder;
  * The pachinko machine is main structure of the coin drop game.
  */
 public class Pachinko{
+    private static Pachinko pachinko;
     private CoinAnimation animation;
     private ArrayList<Coin> coins;
     private int[][] layout;
@@ -17,9 +18,9 @@ public class Pachinko{
     private int winCount;
 
     /**
-     * Constructor for Pachinko instance
+     * Constructor for Pachinko instance.
      */
-    public Pachinko(){
+    private Pachinko(){
         coins = new ArrayList<>();
 
         animation = new CoinAnimation();
@@ -31,6 +32,19 @@ public class Pachinko{
         winCount = 0;
 
         StageBuilder.setTitle("Coin Drop Game (Coins left: " + coinCount + " Wins: " + winCount + ")");
+    }
+
+    /**
+     * Getter for the single Pachinko instance.
+     *
+     * @return the single pachinko instance
+     */
+    public static Pachinko getInstance() {
+        if(pachinko == null) {
+            pachinko = new Pachinko();
+        }
+
+        return pachinko;
     }
 
     /**

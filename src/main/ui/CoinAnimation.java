@@ -3,6 +3,7 @@ package ui;
 import javafx.animation.AnimationTimer;
 
 import model.Coin;
+import model.Pachinko;
 
 import java.util.ArrayList;
 
@@ -15,8 +16,10 @@ public class CoinAnimation extends AnimationTimer {
      */
     @Override
     public void handle(long arg0) {
-        int[][] layout = StageBuilder.pachinko.getLayout();
-        ArrayList<Coin> coins = StageBuilder.pachinko.getCoins();
+        Pachinko pachinko = Pachinko.getInstance();
+
+        int[][] layout = pachinko.getLayout();
+        ArrayList<Coin> coins = pachinko.getCoins();
 
         for(Coin coin : coins){
             double x = coin.getCoinShape().getCenterX();
@@ -45,9 +48,9 @@ public class CoinAnimation extends AnimationTimer {
                 StageBuilder.removeCoin(coin.getCoinShape());
                 coins.remove(coin);
                 if(layout[layout.length - 1][layoutX] == 3){
-                    StageBuilder.pachinko.setWinCount(StageBuilder.pachinko.getWinCount() + 1);
-                    StageBuilder.setTitle("Coin Drop Game (Coins left: " + StageBuilder.pachinko.getCoinCount() +
-                            " Wins: " + StageBuilder.pachinko.getWinCount() + ")");
+                    pachinko.setWinCount(pachinko.getWinCount() + 1);
+                    StageBuilder.setTitle("Coin Drop Game (Coins left: " + pachinko.getCoinCount() +
+                            " Wins: " + pachinko.getWinCount() + ")");
                 }
                 break;
             }
